@@ -17,7 +17,7 @@ def get_yaml_config() -> {}:
     Загружает в программу конфигурацию через YAML
     :return: возвращает словарь конфигурации
     """
-    with open('config.yaml', 'r') as yaml_conf:
+    with open('config.yaml', 'r', encoding='utf-8') as yaml_conf:
         return ymlsl(yaml_conf)
 
 
@@ -81,7 +81,7 @@ def hh_get_request(page: int) -> str:
     :param page: получает номер нужной страницы
     :return: возвращает сырой текст страницы
     """
-    path = f"{config['hh_link']}{profession}&page'{page}"
+    path = f"{config['hh_link']}{profession}&page'{page}&area={config['area']}"
     req = requests.get(path, headers=headers)
     if req.status_code == 200:
         return req.text
@@ -102,7 +102,7 @@ def write_response_to_file(page: int, raw_data: str):
 
 def hh_get_pages_req(max_page: int):
     """
-    Скачивает номера страницы по номеру кроме первой
+    Скачивает страницы по номеру кроме первой
     :param max_page: получает номер страницы
     """
     for page in range(max_page):
