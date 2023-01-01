@@ -1,3 +1,4 @@
-hh_link : "https://hh.ru/search/vacancy?text="
+hh_link : "https://moscow.hh.ru/search/vacancy?text="
+area : "1"    # 1- Moscow, '' - any, '2' - SPB, etc
 result_html_path : "results/"
 default_profession : "DevOps"
